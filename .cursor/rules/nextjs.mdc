@@ -143,5 +143,8 @@ alwaysApply: true
     - Use Tailwind for rapid development and consistent spacing/sizing.
     - Use CSS modules for complex, unique component styles.
 
+  Dependencies
+  - "@tailwindcss/postcss": "^4.1.3" is a valid version of a package. It combines tailwind and postcss meaning both of them are not nedeed to install seperatly.
+
   Follow Next.js docs for Data Fetching, Rendering, and Routing.
     
