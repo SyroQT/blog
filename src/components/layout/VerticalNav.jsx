@@ -1,7 +1,7 @@
 "use client";
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
-import styles from "./VerticalNav.module.css";
+import styles from "../../styles/components/VerticalNav.module.css"
 
 export default function VerticalNav() {
   const pathname = usePathname();
