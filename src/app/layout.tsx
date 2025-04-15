@@ -1,7 +1,24 @@
 import '@/styles/globals.css'
-import { Inter } from 'next/font/google'
+import { Courier_Prime, Roboto, Inter } from 'next/font/google'
 import VerticalNav from '@/components/layout/VerticalNav'
-const inter = Inter({ subsets: ['latin'] })
+
+// Font configurations
+const courierPrime = Courier_Prime({
+  weight: ['400', '700'],
+  subsets: ['latin'],
+  variable: '--font-courier-prime',
+})
+
+const roboto = Roboto({
+  weight: ['400', '500', '700'],
+  subsets: ['latin'],
+  variable: '--font-roboto',
+})
+
+const inter = Inter({ 
+  subsets: ['latin'],
+  variable: '--font-inter',
+})
 
 export const metadata = {
   title: 'Personal Blog',
