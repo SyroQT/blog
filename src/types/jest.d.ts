@@ -5,6 +5,7 @@ declare global {
         interface Matchers<R> extends jest.Matchers<R> {
             toBeInTheDocument(): R
             toHaveAttribute(attr: string, value?: string): R
+            toHaveTextContent(text: string): R
         }
     }
 } 
