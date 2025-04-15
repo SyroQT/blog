@@ -1,6 +1,6 @@
 import '@/styles/globals.css'
 import { Inter } from 'next/font/google'
-
+import VerticalNav from '@/components/layout/VerticalNav'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
@@ -15,7 +15,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={inter.className}>
-      <body>{children}</body>
+      <body>
+        <VerticalNav />
+        <main>{children}</main>
+      </body>
     </html>
   )
 }

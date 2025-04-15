@@ -1,0 +1,50 @@
+.verticalNav {
+    position: fixed;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding: 20px;
+    z-index: 10;
+  }
+  
+  .navItem {
+    color: #802558;
+    font-size: 30px;
+    font-weight: 700;
+    text-transform: lowercase;
+    writing-mode: vertical-lr;
+    text-decoration: none;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+  
+  .navItem::after {
+    content: '';
+    position: absolute;
+    width: 5px;
+    height: 100%;
+    background: #802558;
+    top: 0;
+    right: 50%;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.3s ease;
+  }
+  
+  .navItem:hover::after {
+    transform: scaleY(1);
+  }
+  .navItem.active{
+    font-style: italic;
+    text-decoration: line-through;
+  }
+  
+  @media (max-width: 991px) {
+    .verticalNav {
+      display: none;
+    }
+  }
+  
