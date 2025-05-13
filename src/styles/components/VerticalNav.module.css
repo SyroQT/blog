@@ -19,7 +19,7 @@
     text-decoration: none;
     position: relative;
     transition: all var(--transition-speed) ease;
-    -webkit-text-stroke: 1px black;
+    /* -webkit-text-stroke: 1px black; */
   }
   
   .navItem::after {

@@ -32,11 +32,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${courierPrime.variable} ${inter.variable} ${roboto.variable}`}>
-      <body className="flex min-h-screen">
-        <VerticalNav />
-        <main className="flex-1 p-4">
+      <body className="grid grid-cols-13 min-h-screen ">
+        <main className="col-span-12 p-4">
           {children}
         </main>
+        <div className="col-start-auto col-end-[-1] min-h-screen">
+          <VerticalNav />
+        </div>
       </body>
     </html>
   )
