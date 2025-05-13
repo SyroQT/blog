@@ -15,6 +15,11 @@
     
     /* Sizes */
     --line-width: 5px;
+
+    /* Fonts */
+    --font-courier-prime: 'Courier Prime', monospace;
+    --font-roboto: 'Roboto', sans-serif;
+    --font-inter: 'Inter', sans-serif;
   }
 
   * {
