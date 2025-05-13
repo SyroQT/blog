@@ -8,6 +8,17 @@
   height: 66vh;
   margin-bottom: 1rem;
   position: relative;
-  /* color: #fff; */
-  /* text-align: center; */
+  color: #fff;
+  text-align: center;
 } 
+.heroText {
+
+  bottom: 15%;
+  left: 50%;
+  transform: translate(-50%, -15%);
+  font-family: var(--font-courier-prime);
+  -webkit-text-stroke: 1px black;
+  font-style: italic;
+  position: absolute;
+  text-transform: lowercase;
+}

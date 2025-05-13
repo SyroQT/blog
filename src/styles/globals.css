@@ -34,6 +34,7 @@
     overflow-x: hidden;
     background-color: var(--background-color);
     font-family: var(--font-roboto), sans-serif; 
+    -webkit-font-smoothing: antialiased;
   }
   
   a {

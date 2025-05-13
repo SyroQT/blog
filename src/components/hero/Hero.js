@@ -13,7 +13,9 @@ function Hero() {
                 objectFit='cover'
                 priority
             />
-            {/* Future text overlay */}
+            <div className={styles.heroText}>
+                <h1>Welcome to My Blog</h1>
+            </div>
         </div>
     )
 }
