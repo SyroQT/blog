@@ -19,6 +19,7 @@
     text-decoration: none;
     position: relative;
     transition: all var(--transition-speed) ease;
+    -webkit-text-stroke: 1px black;
   }
   
   .navItem::after {
@@ -42,9 +43,9 @@
     text-decoration: line-through;
   }
   
-  @media (max-width: 991px) {
+/* @media (max-width: 991px) {
     .verticalNav {
       display: none;
     }
-  }
+  } */
   
