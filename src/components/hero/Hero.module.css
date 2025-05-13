@@ -1,0 +1,13 @@
+/* Styles for the Hero component */
+
+.heroWrapper {
+  /* height: 66vh; 2/3 of viewport height */
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #fff;
+  height: 66vh;
+  margin-bottom: 1rem;
+  position: relative;
+  text-align: center;
+} 

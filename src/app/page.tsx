@@ -1,8 +1,10 @@
 import React from 'react'
+import { Hero } from '@/components/hero/Hero'
 
 export default function Home() {
   return (
     <div>
+      <Hero />
       <div className="container mx-auto px-4 py-8">
         <h1 className="text-4xl font-bold mb-4">Welcome to My Blog</h1>
         <p className="text-lg text-muted-foreground">
