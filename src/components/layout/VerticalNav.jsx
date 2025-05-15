@@ -13,7 +13,7 @@ export default function VerticalNav() {
     { label: 'cv', path: '/cv' }
   ];
   return (
-    <nav className={`${styles.verticalNav} w-max h-auto`}>
+    <nav className={`${styles.verticalNav}`}>
       {navItems.map((item) => (
         <Link 
           key={item.path} 

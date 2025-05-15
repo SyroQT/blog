@@ -38,9 +38,10 @@ export default function RootLayout({
           {children}
         </main>
 
-        <aside className="row-span-2 col-start-2 flex items-center justify-around">
+        <aside className="sticky top-0 self-start h-screen flex items-center justify-center col-start-2">
           <VerticalNav />
         </aside>
+
 
       </body>
     </html>

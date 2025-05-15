@@ -24,6 +24,20 @@ export function BlogPosts() {
             excerpt: 'Explore how React Server Components can improve your application\'s performance and developer experience.',
             date: '2024-03-18',
             readTime: '7 min read'
+        },
+        {
+            id: '2',
+            title: 'The Power of Server Components',
+            excerpt: 'Explore how React Server Components can improve your application\'s performance and developer experience.',
+            date: '2024-03-18',
+            readTime: '7 min read'
+        },
+        {
+            id: '2',
+            title: 'The Power of Server Components',
+            excerpt: 'Explore how React Server Components can improve your application\'s performance and developer experience.',
+            date: '2024-03-18',
+            readTime: '7 min read'
         }
     ]
 
