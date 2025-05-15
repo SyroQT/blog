@@ -15,7 +15,7 @@ const roboto = Roboto({
   variable: '--font-roboto',
 })
 
-const inter = Inter({ 
+const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
 })
@@ -32,14 +32,35 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${courierPrime.variable} ${inter.variable} ${roboto.variable}`}>
-      <body className="grid grid-cols-13 min-h-screen ">
-        <main className="col-span-12 p-4">
+      <body className="grid grid h-screen grid-cols-[1fr_auto] grid-rows-[2fr_1fr] gap-2">
+
+        <main className="col-span-1">
           {children}
         </main>
-        <div className="col-start-auto col-end-[-1] min-h-screen">
+
+        <aside className="row-span-2 col-start-2 flex items-center justify-around">
           <VerticalNav />
-        </div>
+        </aside>
+
       </body>
     </html>
   )
 }
+
+{/* <div class="ml-1 grid h-screen grid-cols-[1fr_auto] grid-rows-[2fr_1fr] gap-2">
+  <!-- Left tall column (2/3 of height) -->
+  <div class="bg-red-200 p-4 row-span-1 col-span-1">
+    Column 1 (2/3 height)
+  </div>
+
+  <!-- Right column (auto width, full height) -->
+  <div class="bg-green-200 p-4 row-span-2 col-start-2">
+    Right column (auto width, full height)
+  </div>
+
+  <!-- Left bottom row (1/3 height) -->
+  <div class="bg-blue-200 p-4 row-start-2 col-start-1">
+    Bottom left (1/3 height)
+  </div>
+</div> */}
+
