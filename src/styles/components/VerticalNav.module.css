@@ -8,13 +8,14 @@
   
   .navItem {
     color: var(--primary-color);
-    font-size: var(--nav-font-size);
+    font-size: 1.2rem;
     font-weight: 700;
     text-transform: lowercase;
     writing-mode: vertical-lr;
     text-decoration: none;
     position: relative;
     transition: all var(--transition-speed) ease;
+
   }
   
   .navItem::after {
