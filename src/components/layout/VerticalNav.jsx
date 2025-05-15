@@ -13,12 +13,12 @@ export default function VerticalNav() {
     { label: 'cv', path: '/cv' }
   ];
   return (
-    <nav className={`${styles.verticalNav}`}>
+    <nav className={`${styles.verticalNav} font-courier-prime text-2xl md:text-3xl`}>
       {navItems.map((item) => (
         <Link 
           key={item.path} 
           href={item.path}
-          className={`${styles.navItem} ${pathname === item.path ? styles.active : ''}`}
+          className={` ${styles.navItem} ${pathname === item.path ? styles.active : ''}`}
         >
           {item.label}
         </Link>

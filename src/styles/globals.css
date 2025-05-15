@@ -3,6 +3,13 @@
 @tailwind components;
 @tailwind utilities;
 
+
+@theme inline {
+  --font-sans: var(--font-inter);
+  --font-courier-prime: var(--font-courier-prime);
+  --font-roboto: var(--font-roboto);
+}
+
 :root {
     /* Colors */
     --primary-color: #802558;
@@ -10,10 +17,10 @@
     
     /* Spacing */
     --nav-gap: 3rem;
-    --nav-padding: clamp(0.5rem, 0.3rem + 1vw, 1.5rem);
+    /* --nav-padding: clamp(0.5rem, 0.3rem + 1vw, 1.5rem); */
     
     /* Typography */
-    --nav-font-size: 1.5rem;
+    /* --nav-font-size: 1.5rem; */
 
     /* Transitions */
     --transition-speed: 0.3s;
@@ -22,9 +29,9 @@
     --line-width: 5px;
 
     /* Fonts */
-    --font-courier-prime: 'Courier Prime', monospace;
+    /* --font-courier-prime: 'Courier Prime', monospace;
     --font-roboto: 'Roboto', sans-serif;
-    --font-inter: 'Inter', sans-serif;
+    --font-inter: 'Inter', sans-serif; */
   }
 
   * {

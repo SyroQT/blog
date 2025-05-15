@@ -4,11 +4,14 @@
     gap: var(--nav-gap);
     padding: var(--nav-padding);
     z-index: 10;
+    height: 70vh;
+    justify-content: space-between;
   }
   
   .navItem {
     color: var(--primary-color);
     font-size: var(--nav-font-size);
+    /* font-family: var(--font-courier-prime); */
     font-weight: 700;
     text-transform: lowercase;
     writing-mode: vertical-lr;
@@ -39,9 +42,5 @@
     text-decoration: line-through;
   }
   
-/* @media (max-width: 991px) {
-    .verticalNav {
-      display: none;
-    }
-  } */
+
   
