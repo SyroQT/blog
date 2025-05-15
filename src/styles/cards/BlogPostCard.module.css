@@ -1,9 +1,9 @@
 .blogCard{
-
+/* margin-bottom: 4rem; */
 }
 
 .blogCard::after{
-    border-right: 10px solid white;
+    border-right: 10px solid var(--background-color);
     content: "";
     left: 0;
     position: absolute;

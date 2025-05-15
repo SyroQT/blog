@@ -1,5 +1,5 @@
 import '@/styles/globals.css'
-import { Courier_Prime, Roboto, Inter } from 'next/font/google'
+import { Courier_Prime, Roboto, Inter, Montserrat } from 'next/font/google'
 import VerticalNav from '@/components/layout/VerticalNav'
 
 // Font configurations
@@ -20,6 +20,13 @@ const inter = Inter({
   variable: '--font-inter',
 })
 
+const montserrat = Montserrat({
+  subsets: ['latin'],
+  variable: '--font-montserrat',
+})
+
+
+
 export const metadata = {
   title: 'Personal Blog',
   description: 'A place to share thoughts and experiences',
@@ -31,10 +38,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${courierPrime.variable} ${inter.variable} ${roboto.variable}`}>
+    <html lang="en" className={`${courierPrime.variable} ${inter.variable} ${roboto.variable} ${montserrat.variable}`}>
       <body className="grid grid h-screen grid-cols-[1fr_auto] grid-rows-[2fr_1fr] gap-2">
 
-        <main className="col-span-1">
+        <main className="col-span-1 font-montserrat">
           {children}
         </main>
 
