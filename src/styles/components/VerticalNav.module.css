@@ -8,7 +8,7 @@
   
   .navItem {
     color: var(--primary-color);
-    font-size: 1.2rem;
+    font-size: var(--nav-font-size);
     font-weight: 700;
     text-transform: lowercase;
     writing-mode: vertical-lr;
