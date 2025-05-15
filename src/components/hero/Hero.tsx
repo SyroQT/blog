@@ -13,7 +13,7 @@ function Hero() {
                 objectFit='cover'
                 priority
             />
-            <div className={styles.heroText}>
+            <div className={`${styles.heroText} text-3xl`}>
                 <h1>Welcome to My Blog</h1>
             </div>
         </div>
