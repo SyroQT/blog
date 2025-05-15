@@ -47,20 +47,4 @@ export default function RootLayout({
   )
 }
 
-{/* <div class="ml-1 grid h-screen grid-cols-[1fr_auto] grid-rows-[2fr_1fr] gap-2">
-  <!-- Left tall column (2/3 of height) -->
-  <div class="bg-red-200 p-4 row-span-1 col-span-1">
-    Column 1 (2/3 height)
-  </div>
-
-  <!-- Right column (auto width, full height) -->
-  <div class="bg-green-200 p-4 row-span-2 col-start-2">
-    Right column (auto width, full height)
-  </div>
-
-  <!-- Left bottom row (1/3 height) -->
-  <div class="bg-blue-200 p-4 row-start-2 col-start-1">
-    Bottom left (1/3 height)
-  </div>
-</div> */}
 
