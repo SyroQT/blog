@@ -9,7 +9,7 @@ export default function VerticalNav() {
   const navItems = [
     { label: 'photos', path: '/photos' },
     { label: 'about', path: '/about' },
-    { label: 'blog', path: '/blog' },
+    { label: 'blog', path: '/' },
     { label: 'cv', path: '/cv' }
   ];
   return (

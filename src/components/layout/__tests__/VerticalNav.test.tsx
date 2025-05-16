@@ -1,11 +1,11 @@
 import '@testing-library/jest-dom'
 import React from 'react'
 import { render, screen } from '@testing-library/react'
-import { Navigation } from '../Navigation'
+import VerticalNav from '../VerticalNav'
 
-describe('Navigation', () => {
+describe('VerticalNav', () => {
   beforeEach(() => {
-    render(<Navigation />)
+    render(<VerticalNav />)
   })
 
   it('renders the blog title', () => {
@@ -14,24 +14,23 @@ describe('Navigation', () => {
     
     expect(titleElement).toBeInTheDocument()
     expect(titleElement).toHaveAttribute('href', '/')
-    expect(titleElement).toHaveTextContent('Blog')
+    expect(titleElement).toHaveTextContent('blog')
   })
 
   it('renders navigation links', () => {
     const links = screen.getAllByRole('link')
-    const blogLinks = links.filter(link => link.textContent === 'Blog')
-    const aboutLink = screen.getByRole('link', { name: 'About' })
+    const aboutLink = screen.getByRole('link', { name: 'about' })
     
-    expect(blogLinks).toHaveLength(2)
+    expect(links).toHaveLength(4)
     expect(aboutLink).toBeInTheDocument()
   })
 
   it('has correct links', () => {
     const links = screen.getAllByRole('link')
-    const blogNavLink = links.find(link => link.getAttribute('href') === '/blog')
-    const aboutLink = screen.getByRole('link', { name: 'About' })
+    const cvNavLink = links.find(link => link.getAttribute('href') === '/cv')
+    const aboutLink = screen.getByRole('link', { name: 'about' })
     
-    expect(blogNavLink).toHaveAttribute('href', '/blog')
+    expect(cvNavLink).toHaveAttribute('href', '/cv')
     expect(aboutLink).toHaveAttribute('href', '/about')
   })
 }) 
