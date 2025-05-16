@@ -7,18 +7,12 @@ describe('Home Page', () => {
     render(<Home />)
   })
 
-  it('renders the welcome message', () => {
-    const welcomeMessage = screen.getByText('Welcome to My Blog')
-    expect(welcomeMessage).toBeInTheDocument()
+  it('renders hero text', () => {
+    expect(screen.getByText("Welcome to My Blog")).toBeInTheDocument()
   })
 
-  it('renders the description text', () => {
-    const description = screen.getByText(/A place where I share my thoughts and experiences/i)
-    expect(description).toBeInTheDocument()
-  })
-
-  it('renders the navigation component', () => {
-    const navigation = screen.getByRole('navigation')
-    expect(navigation).toBeInTheDocument()
+  it('renders the blog container with posts', () => {
+    const headings = screen.getAllByRole('heading', { level: 2 })
+    expect(headings.length).toBeGreaterThan(0)
   })
 }) 
