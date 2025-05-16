@@ -2,12 +2,6 @@ import { render, screen } from '@testing-library/react'
 import { Hero } from '../Hero'
 import '@testing-library/jest-dom'
 
-// Mock next/image for Jest (Next.js uses its own image loader)
-jest.mock('next/image', () => (props: any) => {
-  // Strip Next.js-specific props before passing to <img>
-  const { priority, objectFit, priority, ...rest } = props
-  return <img {...rest} />
-})
 
 describe('Hero component', () => {
   it('renders heading text', () => {
