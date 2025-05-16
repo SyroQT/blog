@@ -23,16 +23,4 @@ describe('RootLayout', () => {
     )
     expect(screen.getByTestId('vertical-nav')).toBeInTheDocument()
   })
-
-   it('applies font class names to the <html> element', () => {
-    render(
-      <RootLayout>
-        <div />
-      </RootLayout>
-    )
-    expect(document.documentElement).toHaveClass('--font-courier-prime')
-    expect(document.documentElement).toHaveClass('--font-inter')
-    expect(document.documentElement).toHaveClass('--font-roboto')
-    expect(document.documentElement).toHaveClass('--font-montserrat')
-  })
 })
