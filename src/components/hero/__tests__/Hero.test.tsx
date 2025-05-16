@@ -4,7 +4,9 @@ import '@testing-library/jest-dom'
 
 // Mock next/image for Jest (Next.js uses its own image loader)
 jest.mock('next/image', () => (props: any) => {
-  return <img {...props} />
+  // Strip Next.js-specific props before passing to <img>
+  const { priority, objectFit, priority, ...rest } = props
+  return <img {...rest} />
 })
 
 describe('Hero component', () => {
