@@ -6,7 +6,7 @@ on:
       - '**'  # Runs on push to any branch
 
 jobs:
-  test:
+  unit-tests:
     runs-on: ubuntu-latest
 
     steps:
@@ -16,7 +16,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'  # Adjust to your project's Node.js version
+          node-version: '18' 
 
       - name: Install dependencies
         run: npm install
