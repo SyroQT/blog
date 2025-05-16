@@ -1,5 +1,4 @@
 import '@testing-library/jest-dom'
-import { jest } from '@jest/globals'
 import type { NextRouter } from 'next/router'
 import type { ImageProps } from 'next/image'
 import React from 'react'
