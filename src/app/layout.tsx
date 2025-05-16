@@ -26,7 +26,7 @@ const montserrat = Montserrat({
 })
 
 
-
+// TODO: refactor to root Layout
 export const metadata = {
   title: 'Personal Blog',
   description: 'A place to share thoughts and experiences',

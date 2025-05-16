@@ -7,6 +7,7 @@ const inter = Inter({ subsets: ['latin'] })
 interface RootLayoutProps {
   children: ReactNode
 }
+// Use this as a main place to call layout without html tag for testing
 
 export function RootLayout({ children }: RootLayoutProps) {
   return (
