@@ -21,6 +21,6 @@ jest.mock('next/router', () => ({
 jest.mock('next/image', () => {
   return function MockedImage(props: any) {
     const { priority, objectFit, layout, ...rest } = props
-    return <img {...rest} />
+    return React.createElement('img', { ...rest })
   }
 })
