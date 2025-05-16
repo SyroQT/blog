@@ -20,7 +20,7 @@ jest.mock('next/router', () => ({
 
 // Mock next/image
 jest.mock('next/image', () => {
-  return (props: ImageProps) => {
+  return function MockedImage(props: any) {
     const { priority, objectFit, layout, ...rest } = props
     return <img {...rest} />
   }
