@@ -24,16 +24,17 @@ describe('RootLayout', () => {
     expect(screen.getByTestId('vertical-nav')).toBeInTheDocument()
   })
 
- it('includes font classes', () => {
+  it('sincludes font classes', () => {
     render(
       <RootLayout>
         <div />
       </RootLayout>
     )
+    const html = document.querySelector('html')
 
-    expect(html.className).toMatch(/--font-courier-prime/)
-    expect(html.className).toMatch(/--font-inter/)
-    expect(html.className).toMatch(/--font-roboto/)
-    expect(html.className).toMatch(/--font-montserrat/)
+    expect(html?.className).toMatch(/--font-courier-prime/)
+    expect(html?.className).toMatch(/--font-inter/)
+    expect(html?.className).toMatch(/--font-roboto/)
+    expect(html?.className).toMatch(/--font-montserrat/)
   })
 })
