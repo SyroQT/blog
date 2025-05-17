@@ -42,9 +42,13 @@ export function BlogPosts() {
     ]
 
     return (
-        <section className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {posts.map((post) => (
-                <BlogPostCard key={post.id} post={post} />
+        <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {posts.map((post, index) => (
+                <BlogPostCard
+                    key={post.id}
+                    post={post}
+                    isLeft={index % 2 === 0}
+                />
             ))}
         </section>
     )
