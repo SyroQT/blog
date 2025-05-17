@@ -12,63 +12,64 @@
 }
 
 :root {
-    /* Colors */
-    --primary-color: #802558;
-    --background-color: #faebd7;
-    
-    /* Spacing */
-    --nav-gap: 3rem;
-    /* --nav-padding: clamp(0.5rem, 0.3rem + 1vw, 1.5rem); */
-    
-    /* Typography */
-    /* --nav-font-size: 1.5rem; */
+  /* Colors */
+  --primary-color: #802558;
+  --background-color: #faebd7;
 
-    /* Transitions */
-    --transition-speed: 0.3s;
-    
-    /* Sizes */
-    --line-width: 5px;
+  /* Spacing */
+  --nav-gap: 3rem;
+  /* --nav-padding: clamp(0.5rem, 0.3rem + 1vw, 1.5rem); */
 
-    /* Fonts */
-    /* --font-courier-prime: 'Courier Prime', monospace;
+  /* Typography */
+  /* --nav-font-size: 1.5rem; */
+
+  /* Transitions */
+  --transition-speed: 0.3s;
+
+  /* Sizes */
+  --line-width: 5px;
+
+  /* Fonts */
+  /* --font-courier-prime: 'Courier Prime', monospace;
     --font-roboto: 'Roboto', sans-serif;
     --font-inter: 'Inter', sans-serif; */
-  }
+}
 
-  * {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-  }
-  
-  html,
-  body {
-    max-width: 100vw;
-    overflow-x: hidden;
-    background-color: var(--background-color);
-    font-family: var(--font-roboto), sans-serif; 
-    -webkit-font-smoothing: antialiased;
-  }
-  
-  a {
-    color: inherit;
-    text-decoration: none;
-    transition: all 0.3s ease; 
-  }
-  ::selection {
-    background: var(--primary-color);
-    color: white;
-  }
-  
-  /* Smooth scrolling */
-  html {
-    scroll-behavior: smooth;
-  }
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
 
-  main {
-    margin-left: 0.5rem;
-  }
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  background-color: var(--background-color);
+  font-family: var(--font-roboto), sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
 
-  h2{
-    color: var(--primary-color);
-  }
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: all var(--transition-speed) ease;
+}
+
+::selection {
+  background: var(--primary-color);
+  color: white;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+main {
+  margin-left: 0.5rem;
+}
+
+h2 {
+  color: var(--primary-color);
+}

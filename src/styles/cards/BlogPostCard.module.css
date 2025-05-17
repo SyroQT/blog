@@ -1,8 +1,8 @@
-.blogCard{
-/* margin-bottom: 4rem; */
+.blogCard {
+    cursor: pointer;
 }
 
-.blogCard::after{
+.blogCard::after {
     border-right: 10px solid var(--background-color);
     content: "";
     left: 0;
@@ -16,4 +16,9 @@
     bottom: -5px;
     height: 0;
     border-top: 7px solid var(--primary-color);
-  }
+    transition: width var(--transition-speed) ease;
+}
+
+.blogCard:hover::after {
+    width: calc(100% - 10px);
+}
