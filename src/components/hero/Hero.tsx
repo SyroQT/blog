@@ -8,10 +8,11 @@ function Hero() {
         <header className={`${styles.heroWrapper}`}>
             <Image
                 src={imageUrl}
-                alt='Hero Image'
-                layout='fill'
-                objectFit='cover'
+                alt="Hero Image"
+                fill
                 priority
+                style={{ objectFit: 'cover' }} // or use className="object-cover"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
             <div className={`${styles.heroText} text-3xl md:text-4xl`}>
                 <h1>Welcome to My Blog</h1>

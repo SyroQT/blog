@@ -1,52 +1,43 @@
+'use client'
+import { useEffect, useState } from 'react'
 import { BlogPostCard } from './BlogPostCard'
+import { fetchBlogs, BlogPost } from '@/lib/firebase/blogs'
 
-interface BlogPost {
-    id: string
-    title: string
-    excerpt: string
-    date: string
-    readTime: string
-}
 
 export function BlogPosts() {
-    // This would typically come from your data source
-    const posts: BlogPost[] = [
-        {
-            id: '1',
-            title: 'Getting Started with Next.js App Router',
-            excerpt: 'Learn how to build modern web applications with Next.js 14 and its revolutionary App Router architecture.',
-            date: '2024-03-20',
-            readTime: '5 min read'
-        },
-        {
-            id: '2',
-            title: 'The Power of Server Components',
-            excerpt: 'Explore how React Server Components can improve your application\'s performance and developer experience.',
-            date: '2024-03-18',
-            readTime: '7 min read'
-        },
-        {
-            id: '3',
-            title: 'The Power of Server Components',
-            excerpt: 'Explore how React Server Components can improve your application\'s performance and developer experience.',
-            date: '2024-03-18',
-            readTime: '7 min read'
-        },
-        {
-            id: '4',
-            title: 'The Power of Server Components',
-            excerpt: 'Explore how React Server Components can improve your application\'s performance and developer experience.',
-            date: '2024-03-18',
-            readTime: '7 min read'
-        }
-    ]
+    const [blogs, setBlogs] = useState<BlogPost[]>([])
+    const [loading, setLoading] = useState(true)
+    const [error, setError] = useState<string | null>(null)
 
+    useEffect(() => {
+        async function loadBlogs() {
+            try {
+                const fetchedBlogs = await fetchBlogs()
+                setBlogs(fetchedBlogs)
+            } catch (err) {
+                setError('Failed to load blogs')
+                console.error(err)
+            } finally {
+                setLoading(false)
+            }
+        }
+        loadBlogs()
+    }, [])
+
+
+    if (loading) {
+        return <div>Loading blogs...</div>
+    }
+
+    if (error) {
+        return <div className="text-red-500">{error}</div>
+    }
     return (
         <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {posts.map((post, index) => (
+            {blogs.map((blog, index) => (
                 <BlogPostCard
-                    key={post.id}
-                    post={post}
+                    key={blog.id}
+                    post={blog}
                     isLeft={index % 2 === 0}
                 />
             ))}
