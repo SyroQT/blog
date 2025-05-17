@@ -1,4 +1,4 @@
-import { collection, getDocs, limit, doc, getDoc } from 'firebase/firestore'
+import { collection, getDocs, limit, doc, getDoc, query, orderBy } from 'firebase/firestore'
 import { db, storage } from './config'
 import { getDownloadURL, ref } from 'firebase/storage'
 
@@ -27,7 +27,9 @@ async function getImageUrl(storagePath: string): Promise<string> {
 
 export async function fetchBlogs(): Promise<BlogPost[]> {
     const blogsRef = collection(db, 'blogs')
-    const snapshot = await getDocs(blogsRef)
+    const blogsQuery = query(blogsRef, orderBy('published_date', 'desc'))
+
+    const snapshot = await getDocs(blogsQuery)
 
     const blogs: BlogPost[] = await Promise.all(
         snapshot.docs.map(async doc => {
@@ -45,13 +47,13 @@ export async function fetchBlogs(): Promise<BlogPost[]> {
             return {
                 id: doc.id,
                 ...data,
-                imageUrl
+                imageUrl,
             } as BlogPost
         })
     )
+
     return blogs
 }
-
 export async function fetchBlogById(id: string) {
     try {
         const blogRef = doc(db, 'blogs', id)

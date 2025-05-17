@@ -7,7 +7,7 @@ export function BlogPostCard({ post, isLeft }: { post: BlogPost; isLeft: boolean
     return (
         <div className={`${styles.blogCard} relative flex gap-4 aspect-[4/3] ${isLeft ? styles.left : ''}`}>
             {/* Image container with fixed dimensions */}
-            <div className="relative w-1/2 h-full overflow-hidden">
+            <div className="relative w-1/2 h-full ">
                 <Image
                     src={post.imageUrl || imageFallBack}
                     alt={post.title || "Blog post image"}
@@ -19,11 +19,11 @@ export function BlogPostCard({ post, isLeft }: { post: BlogPost; isLeft: boolean
             </div>
 
             {/* Text content */}
-            <div className="flex flex-col gap-4 w-1/2 p-4">
-                <h2 className="text-xl md:text-2xl font-semibold">
+            <div className="flex flex-col gap-0.5 w-1/2 p-2 max-h-48 overflow-hidden">
+                <h2 className="text-xl  md:text-2xl font-semibold  ">
                     {post.title}
                 </h2>
-                <p className="text-sm truncate md:text-base leading-relaxed">
+                <p className="text-sm break-words md:text-base leading-relaxed">
                     {post.description}
                 </p>
             </div>
