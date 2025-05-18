@@ -55,19 +55,30 @@ export async function fetchBlogs(): Promise<BlogPost[]> {
     return blogs
 }
 
-export async function fetchBlogById(id: string) {
+export async function fetchBlogById(id: string): Promise<BlogPost> {
     try {
         const blogRef = doc(db, 'blogs', id)
         const blogSnap = await getDoc(blogRef)
-
 
         if (!blogSnap.exists()) {
             throw new Error('Blog not found')
         }
 
+        const data = blogSnap.data()
+        let imageUrl: string | undefined
+
+        if (data.main_image) {
+            try {
+                imageUrl = await getImageUrl(data.main_image)
+            } catch (error) {
+                console.error(`Error fetching image URL for blog ${id}:`, error)
+            }
+        }
+
         return {
             id: blogSnap.id,
-            ...blogSnap.data()
+            ...data,
+            imageUrl,
         } as BlogPost
     } catch (error) {
         console.error('Error fetching blog:', error)
