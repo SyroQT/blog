@@ -4,11 +4,12 @@ import { fetchBlogById } from '@/lib/firebase/blogs'
 import { Article } from '@/components/blog/Article'
 
 interface PageProps {
-    params: {
+    params: Promise<{
         slug: string
-    }
+    }>
 }
-export default async function BlogPostPage({ params }: PageProps) {
+export default async function BlogPostPage(props: PageProps) {
+    const params = await props.params;
     try {
         // Fetch the blog post using the ID from the URL
         console.log('params', params)
