@@ -15,7 +15,7 @@ export interface BlogPost {
     tags?: string[]
 }
 
-async function getImageUrl(storagePath: string): Promise<string> {
+export async function getImageUrl(storagePath: string): Promise<string> {
     try {
         const imageRef = ref(storage, storagePath)
         return await getDownloadURL(imageRef)
@@ -54,6 +54,7 @@ export async function fetchBlogs(): Promise<BlogPost[]> {
 
     return blogs
 }
+
 export async function fetchBlogById(id: string) {
     try {
         const blogRef = doc(db, 'blogs', id)
