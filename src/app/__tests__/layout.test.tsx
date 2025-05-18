@@ -6,14 +6,6 @@ import '@testing-library/jest-dom'
 jest.mock('@/components/layout/VerticalNav', () => () => <nav data-testid="vertical-nav">Nav</nav>)
 
 describe.skip('RootLayout', () => {
-  // it('renders children inside main content area', () => {
-  //   render(
-  //     <RootLayout>
-  //       <p>Test Content</p>
-  //     </RootLayout>
-  //   )
-  //   expect(screen.getByText('Test Content')).toBeInTheDocument()
-  // })
 
   it('renders VerticalNav inside aside', () => {
     render(
@@ -24,18 +16,6 @@ describe.skip('RootLayout', () => {
     expect(screen.getByTestId('vertical-nav')).toBeInTheDocument()
   })
 
-  // it('applies correct font classes to html element', () => {
-  //   customRender(
-  //     <RootLayout>
-  //       <div />
-  //     </RootLayout>
-  //   )
-  //   const htmlElement = document.documentElement
-  //   expect(htmlElement).toHaveClass('--font-courier-prime')
-  //   expect(htmlElement).toHaveClass('--font-inter')
-  //   expect(htmlElement).toHaveClass('--font-roboto')
-  //   expect(htmlElement).toHaveClass('--font-montserrat')
-  // })
 
   it('applies correct layout classes to body', () => {
     render(
