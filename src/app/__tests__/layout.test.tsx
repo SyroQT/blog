@@ -3,7 +3,11 @@ import Layout from '@/app/layout'
 import '@testing-library/jest-dom'
 
 // Mock VerticalNav to avoid full render
-jest.mock('@/components/layout/VerticalNav', () => () => <nav data-testid="vertical-nav">Nav</nav>)
+jest.mock('@/components/layout/VerticalNav', () => {
+  const MockVerticalNav = () => <nav data-testid="vertical-nav">Nav</nav>
+  MockVerticalNav.displayName = 'VerticalNav'
+  return MockVerticalNav
+})
 
 describe.skip('RootLayout', () => {
 

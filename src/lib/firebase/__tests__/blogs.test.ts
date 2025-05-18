@@ -1,7 +1,7 @@
 import { collection, getDocs, doc, getDoc, query, orderBy } from 'firebase/firestore'
-import { getDownloadURL, ref } from 'firebase/storage'
+import { getDownloadURL, ref, StorageReference, FirebaseStorage } from 'firebase/storage'
 import { db, storage } from '../config'
-import { fetchBlogs, fetchBlogById, getImageUrl, BlogPost } from '../blogs'
+import { fetchBlogs, fetchBlogById, getImageUrl } from '../blogs'
 
 // Mock Firebase modules
 jest.mock('firebase/firestore')
@@ -13,10 +13,17 @@ jest.mock('../config', () => ({
 
 describe('Blog API Functions', () => {
     beforeAll(() => {
-        // Mock ref to return an object with _location.path_
-        (ref as any).mockImplementation((storage: unknown, path: string) => ({
-            _location: { path_: path }
-        }))
+        // Mock ref to return a StorageReference-like object
+        (ref as jest.Mock).mockImplementation((storage: unknown, path: string): StorageReference => ({
+            _location: { path_: path },
+            bucket: 'mock-bucket',
+            fullPath: path,
+            name: path.split('/').pop() || '',
+            root: {} as StorageReference,
+            parent: null,
+            storage: {} as FirebaseStorage,
+            toString: () => `gs://mock-bucket/${path}`
+        } as StorageReference))
     })
     beforeEach(() => {
         jest.clearAllMocks()

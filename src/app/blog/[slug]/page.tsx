@@ -1,4 +1,3 @@
-import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { fetchBlogById } from '@/lib/firebase/blogs'
 import { Article } from '@/components/blog/Article'

@@ -1,7 +1,5 @@
-// 'use client'
-import { useEffect, useState } from 'react'
 import { BlogPostCard } from './BlogPostCard'
-import { fetchBlogs, BlogPost } from '@/lib/firebase/blogs'
+import { fetchBlogs } from '@/lib/firebase/blogs'
 
 
 // export function BlogPosts() {
