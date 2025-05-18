@@ -1,6 +1,6 @@
 import React from 'react'
 import { Hero } from '@/components/hero/Hero'
-import { BlogPosts } from '../components/cards/BlogPosts'
+import { BlogPosts } from '@/components/cards/BlogPosts'
 
 export default function Home() {
   return (
@@ -9,4 +9,4 @@ export default function Home() {
       <BlogPosts />
     </div>
   )
-} 
+}

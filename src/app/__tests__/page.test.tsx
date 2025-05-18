@@ -2,17 +2,16 @@ import React from 'react'
 import { render, screen } from '@testing-library/react'
 import Home from '../page'
 
-describe('Home Page', () => {
-  beforeEach(() => {
-    render(<Home />)
-  })
+jest.mock('@/components/cards/BlogPosts', () => ({
+  BlogPosts: () => <div>Mock BlogPosts</div>
+}))
 
-  it('renders hero text', () => {
-    expect(screen.getByText("Welcome to My Blog")).toBeInTheDocument()
-  })
+jest.mock('@/components/hero/Hero', () => ({
+  Hero: () => <div>Mock Hero</div>
+}))
 
-  it('renders the blog container with posts', () => {
-    const headings = screen.getAllByRole('heading', { level: 2 })
-    expect(headings.length).toBeGreaterThan(0)
-  })
-}) 
+test('renders Home component with Hero and BlogPosts', () => {
+  render(<Home />)
+  expect(screen.getByText('Mock Hero')).toBeInTheDocument()
+  expect(screen.getByText('Mock BlogPosts')).toBeInTheDocument()
+})

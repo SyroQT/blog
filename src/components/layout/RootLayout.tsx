@@ -1,21 +1,44 @@
-import React from 'react'
-import { ReactNode } from 'react'
-import { Inter } from 'next/font/google'
+import { Courier_Prime, Roboto, Inter, Montserrat } from 'next/font/google'
+import VerticalNav from '@/components/layout/VerticalNav'
 
-const inter = Inter({ subsets: ['latin'] })
+// Font configurations
+const courierPrime = Courier_Prime({
+  weight: ['400', '700'],
+  subsets: ['latin'],
+  variable: '--font-courier-prime',
+})
+
+const roboto = Roboto({
+  weight: ['400', '500', '700'],
+  subsets: ['latin'],
+  variable: '--font-roboto',
+})
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+})
+
+const montserrat = Montserrat({
+  subsets: ['latin'],
+  variable: '--font-montserrat',
+})
 
 interface RootLayoutProps {
-  children: ReactNode
+  children: React.ReactNode
 }
-// Use this as a main place to call layout without html tag for testing
 
 export function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <main className="min-h-screen bg-background">
+    <html lang="en" className={`${courierPrime.variable} ${inter.variable} ${roboto.variable} ${montserrat.variable}`}>
+      <body className="grid grid h-screen grid-cols-[1fr_auto] grid-rows-[2fr_1fr] gap-2">
+        <main className="col-span-1 font-montserrat">
           {children}
         </main>
+
+        <aside className="sticky top-0 self-start h-screen flex items-center justify-center col-start-2">
+          <VerticalNav />
+        </aside>
       </body>
     </html>
   )
