@@ -60,6 +60,7 @@ export async function fetchBlogById(id: string) {
         const blogRef = doc(db, 'blogs', id)
         const blogSnap = await getDoc(blogRef)
 
+
         if (!blogSnap.exists()) {
             throw new Error('Blog not found')
         }
