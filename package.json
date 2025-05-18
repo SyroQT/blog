@@ -33,10 +33,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage",
+    "lint": "next lint --config ./config/.eslintrc.json",
+    "test": "jest --config ./config/jest.config.js",
+    "test:watch": "jest --config ./config/jest.config.js --watch",
+    "test:coverage": "jest --config ./config/jest.config.js --coverage",
     "type-check": "tsc --noEmit"
   },
   "engines": {
