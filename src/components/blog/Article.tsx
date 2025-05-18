@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import { BlogPost } from '@/lib/firebase/blogs'
+import ReactMarkdown from 'react-markdown'
 
 interface ArticleProps {
     post: BlogPost
@@ -15,7 +16,6 @@ export function Article({ post }: ArticleProps) {
                 <h1 className="text-3xl md:text-4xl font-bold mb-4">{post.title}</h1>
                 <p className="text-lg text-gray-600 mb-4">{post.description}</p>
                 <div className="flex items-center gap-4 text-sm text-gray-500">
-
                     <span>•</span>
                     <span>{post.readTime} read</span>
                 </div>
@@ -35,7 +35,7 @@ export function Article({ post }: ArticleProps) {
 
             {/* Content */}
             <div className="prose prose-lg max-w-none">
-                <div dangerouslySetInnerHTML={{ __html: post.content }} />
+                <ReactMarkdown>{post.content}</ReactMarkdown>
             </div>
 
             {/* Tags */}
