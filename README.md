@@ -1,3 +1,4 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/e19109d4-d1d2-47bc-bb07-a6f3cfb787d6/deploy-status)](https://app.netlify.com/projects/lambent-queijadas-6957b2/deploys)
 # Personal Blog - Next.js & Firebase
 
 A modern, performant personal blog built with Next.js 14 (App Router), Firebase, and TypeScript.

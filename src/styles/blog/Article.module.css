@@ -1,0 +1,26 @@
+.articleBlogText {
+    max-width: 65ch;
+    margin: 0 auto;
+    margin-top: 2rem;
+    padding: 0 1rem;
+    line-height: 1.8;
+}
+
+.articleBlogText p {
+    margin-bottom: 1.5rem;
+}
+
+.articleBlogText h1,
+.articleBlogText h2,
+.articleBlogText h3,
+.articleBlogText h4 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.articleBlogText img {
+    max-width: 100%;
+    height: auto;
+    margin: 2rem auto;
+    border-radius: 0.5rem;
+}
