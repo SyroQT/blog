@@ -8,10 +8,8 @@
   height: 66vh;
   margin-bottom: 1rem;
   position: relative;
-  color: #fff;
-  text-align: center;
+}
 
-} 
 .heroText {
   bottom: 15%;
   left: 50%;
@@ -20,4 +18,6 @@
   font-style: italic;
   position: absolute;
   text-transform: lowercase;
+  color: #fff;
+  text-align: center;
 }

@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import { BlogPost } from '@/lib/firebase/blogs'
 import ReactMarkdown from 'react-markdown'
+import { Title } from '../ui/Title'
 
 interface ArticleProps {
     post: BlogPost
@@ -23,14 +24,16 @@ export function Article({ post }: ArticleProps) {
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
                     {/* Title Overlay */}
-                    <div className="absolute inset-0 flex items-center justify-center rounded-lg">
-                        <h1 className="text-4xl md:text-5xl font-bold text-white text-center px-4">
-                            {post.title}
-                        </h1>
-                    </div>
+                    <Title>
+                        <h1>{post.title}</h1>
+                    </Title>
+                    {/* <h1 className="text-4xl md:text-5xl font-bold text-white text-center px-4">
+                        {post.title}
+                    </h1> */}
+
                 </div>
             </div>
-        </article>
+        </article >
     )
 }
 
