@@ -12,7 +12,7 @@ function Hero() {
                 alt="Hero Image"
                 fill
                 priority
-                className='rounded-lg'
+                className='rounded-lg object-cover'
             />
             <Title>
                 <h1>Welcome to My Blog</h1>
