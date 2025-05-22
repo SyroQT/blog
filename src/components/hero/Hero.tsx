@@ -12,8 +12,7 @@ function Hero() {
                 alt="Hero Image"
                 fill
                 priority
-                style={{ objectFit: 'cover' }} // or use className="object-cover"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                className='rounded-lg'
             />
             <Title>
                 <h1>Welcome to My Blog</h1>

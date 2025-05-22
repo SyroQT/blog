@@ -19,9 +19,16 @@ export function Article({ post }: ArticleProps) {
                         src={post.imageUrl || imageFallBack}
                         alt={post.title}
                         fill
-                        className="object-cover rounded-lg"
+                        className=""
                         priority
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    />
+                    <Image
+                        src={post.imageUrl || imageFallBack}
+                        alt={post.title}
+                        fill
+                        priority
+                        className='rounded-lg object-cover '
                     />
                     {/* Title Overlay */}
                     <Title>
