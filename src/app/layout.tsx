@@ -1,28 +1,34 @@
 import '@/styles/globals.css'
 import { RootLayout } from '@/components/layout/RootLayout'
-import { Metadata } from 'next'
+import { Metadata, Viewport } from 'next'
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+}
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
   title: {
     default: 'Titas Janusonis',
     template: '%s | Personal Blog'
   },
   description: 'Vieta Pamąstymams',
   icons: {
-    icon: '/favicon.ico', // Add your favicon.ico to the public folder
-    apple: '/apple-icon.png', // Add your apple icon to the public folder
+    icon: '/favicon.ico',
+    apple: '/apple-icon.png',
   },
-  manifest: '/site.webmanifest', // Add your web manifest file to the public folder
+  manifest: '/site.webmanifest',
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://your-blog-url.com',
+    url: 'https://titas.dev',
     siteName: 'Personal Blog',
     title: 'Personal Blog',
     description: 'A place to share thoughts and experiences',
     images: [
       {
-        url: '/og-image.jpg', // Add your OG image to the public folder
+        url: '/android-chrome-512x512.png',
         width: 1200,
         height: 630,
         alt: 'Personal Blog',
@@ -33,11 +39,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Personal Blog',
     description: 'A place to share thoughts and experiences',
-    images: ['/og-image.jpg'], // Same image as OpenGraph
-  },
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
+    images: ['/android-chrome-512x512.png'],
   },
   robots: {
     index: true,
@@ -52,5 +54,3 @@ export default function Layout({
 }) {
   return <RootLayout>{children}</RootLayout>
 }
-
-
