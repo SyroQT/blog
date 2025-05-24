@@ -18,8 +18,6 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
-# Copy .env file if it exists
-COPY .env ./
 
 # Build application
 RUN npm run build
