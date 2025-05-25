@@ -23,12 +23,12 @@ jobs:
       - name: Copy code to VPS
         run: |
           rsync -avz --exclude node_modules --exclude .git ./ \
-            ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:${{ secrets.DEPLOY_PATH }}
+            ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:${{ vars.DEPLOY_PATH }}
 
       - name: Deploy on VPS
         run: |
           ssh ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} << 'EOF'
-            cd ${{ secrets.DEPLOY_PATH }}
+            cd ${{ vars.DEPLOY_PATH }}
             docker compose down || true
             docker compose up -d --build
           EOF
