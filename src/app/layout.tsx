@@ -22,10 +22,10 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://titas.dev',
-    siteName: 'Personal Blog',
-    title: 'Personal Blog',
-    description: 'A place to share thoughts and experiences',
+    url: process.env.NEXT_PUBLIC_SITE_URL,
+    siteName: 'Titas Janusonis Blog',
+    title: 'Titas Blog',
+    description: 'Vieta Pamąstymams',
     images: [
       {
         url: '/android-chrome-512x512.png',
