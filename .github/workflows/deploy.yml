@@ -22,8 +22,12 @@ jobs:
 
       - name: Copy code to VPS
         run: |
-          rsync -avz --exclude node_modules --exclude .git ./ \
-            ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:${{ vars.DEPLOY_PATH }}/blog
+            rsync -avz --delete --delete-excluded \
+              --exclude node_modules \
+              --exclude .git \
+              ./ \
+              "${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:${{ vars.DEPLOY_PATH }}/blog/"
+
 
       - name: Deploy on VPS
         run: |
