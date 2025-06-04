@@ -14,7 +14,7 @@ A modern, performant personal blog built with Next.js 14 (App Router), Firebase,
   - Hosting
 - **Styling**: 
   - Tailwind CSS
-  - Stylus (CSS Modules)
+  - CSS Modules
 - **UI Components**: 
   - Shadcn UI
   - Radix UI
@@ -53,7 +53,7 @@ src/
 - [ ] Firebase setup and configuration
 - [ ] Basic layout and navigation
 - [ ] Authentication system
-- [ ] Basic styling setup (Tailwind + Stylus)
+- [ ] Basic styling setup (Tailwind + CSS Modules)
 
 ### Phase 2: Blog Functionality (Week 2)
 - [ ] Blog post creation and management
@@ -90,7 +90,7 @@ src/
 
 ### Styling
 - Use Tailwind for utility classes
-- Implement Stylus modules for complex components
+- Implement CSS Modules for complex components
 - Follow mobile-first approach
 - Maintain consistent spacing and typography
 
