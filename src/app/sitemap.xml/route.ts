@@ -1,7 +1,7 @@
 import { fetchBlogs } from '@/lib/firebase/blogs'
 
 export async function GET() {
-  const baseUrl = 'https://www.blog.titas.dev'
+  const baseUrl = 'https://blog.titas.dev'
   const blogs = await fetchBlogs()
   const posts = blogs.filter(b => b.published)
 
