@@ -4,9 +4,9 @@ import { Article } from '@/components/blog/Article'
 import { Metadata } from 'next'
 
 interface PageProps {
-    params: Promise<{
+    params: {
         slug: string
-    }>
+    }
 }
 
 // Generate metadata for the page
@@ -38,8 +38,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     }
 }
 
-export default async function BlogPostPage(props: PageProps) {
-    const params = await props.params;
+export default async function BlogPostPage({ params }: PageProps) {
     try {
         // Fetch the blog post using the ID from the URL
         const post = await fetchBlogById(params.slug)
