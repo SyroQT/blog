@@ -34,6 +34,5 @@ jobs:
         run: |
           ssh ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} << 'EOF'
             cd ${{ vars.DEPLOY_PATH }}
-            docker compose down || true
-            docker compose up -d --build
+            docker compose up -d --build ${{ vars.SERVICE_NAME }}
           EOF
