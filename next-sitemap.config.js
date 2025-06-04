@@ -2,7 +2,7 @@
 const { fetchBlogs } = require('./src/lib/firebase/blogs')
 
 module.exports = {
-    siteUrl: 'https://www.blog.titas.dev',
+    siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'https://your-domain.com',
     generateRobotsTxt: true, // optional
     sitemapSize: 5000,
     async additionalPaths(config) {
