@@ -25,6 +25,7 @@ jobs:
             rsync -avz --delete --delete-excluded \
               --exclude node_modules \
               --exclude .git \
+              --exclude .env \
               ./ \
               "${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:${{ vars.DEPLOY_PATH }}/blog/"
 
