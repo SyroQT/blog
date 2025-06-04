@@ -3,4 +3,4 @@ User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://your-blog-url.com/sitemap.xml 
+Sitemap: https://www.blog.titas.dev/sitemap.xml
