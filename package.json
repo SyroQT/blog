@@ -1,8 +1,8 @@
 {
-  "name": "your-blog",
+  "name": "Titas Blog",
   "version": "1.0.0",
   "private": true,
-  "description": "Personal blog built with Next.js",
+  "description": "Personal blog of Titas Janusonis",
   "dependencies": {
     "@tailwindcss/postcss": "^4.1.7",
     "firebase": "^11.6.0",
