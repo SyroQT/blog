@@ -97,6 +97,7 @@ src/
 ### Performance
 - Optimize images and assets
 - Implement proper caching
+- Firebase-powered pages revalidate every hour to keep content fresh. The interval is defined by `REVALIDATE_INTERVAL` in `src/lib/constants.ts`.
 - Minimize client-side JavaScript
 - Use React Server Components where possible
 
@@ -157,4 +158,4 @@ The application will be deployed on Firebase Hosting. Follow these steps:
 
 ## License
 
-This project is licensed under the MIT License. 
+This project is licensed under the MIT License.
