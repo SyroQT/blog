@@ -14,8 +14,9 @@ interface PageProps {
 }
 
 // Generate metadata for the page
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-    const post = await fetchBlogById(params.slug)
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+    const resolvedParams = await params
+    const post = await fetchBlogById(resolvedParams.slug)
 
     if (!post) {
         return {
