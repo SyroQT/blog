@@ -1,4 +1,4 @@
-import { collection, getDocs, doc, getDoc, query, orderBy } from 'firebase/firestore'
+import { collection, getDocs, doc, getDoc, query, orderBy, Timestamp } from 'firebase/firestore'
 import { db, storage } from './config'
 import { getDownloadURL, ref } from 'firebase/storage'
 
@@ -9,7 +9,7 @@ export interface BlogPost {
     main_image: string
     content: string
     published: boolean
-    published_date: Date
+    published_date: Timestamp
     readTime: string
     imageUrl?: string
     tags?: string[]
