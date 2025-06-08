@@ -6,34 +6,46 @@ on:
       - main
 
 jobs:
-  deploy:
+  build-and-push:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Set up SSH
-        run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.VPS_SSH_KEY }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -H ${{ secrets.VPS_HOST }} >> ~/.ssh/known_hosts
+      - name: Log in to GitHub Container Registry
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
-      - name: Copy code to VPS
-        run: |
-            rsync -avz --delete --delete-excluded \
-              --exclude node_modules \
-              --exclude .git \
-              --filter "protect .env" \
-              ./ \
-              "${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:${{ vars.DEPLOY_PATH }}/blog/"
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
 
-
-      - name: Deploy on VPS
+      - name: Build and push Docker image
         run: |
-          ssh ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} << 'EOF'
-            cd ${{ vars.DEPLOY_PATH }}
-            docker compose down || true
-            docker compose up -d --build ${{ vars.SERVICE_NAME }}
-          EOF
+          IMAGE_NAME=ghcr.io/${{ github.repository_owner }}/titas-blog:latest
+
+          docker build -t $IMAGE_NAME .
+          docker push $IMAGE_NAME
+  # deploy:
+  #   needs: build-and-push
+  #   runs-on: ubuntu-latest
+
+  #   steps:
+  #     - name: Set up SSH
+  #       run: |
+  #         mkdir -p ~/.ssh
+  #         echo "${{ secrets.VPS_SSH_KEY }}" > ~/.ssh/id_rsa
+  #         chmod 600 ~/.ssh/id_rsa
+  #         ssh-keyscan -H ${{ secrets.VPS_HOST }} >> ~/.ssh/known_hosts
+
+  #     - name: Deploy on VPS
+  #       run: |
+  #         ssh ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} << 'EOF'
+  #           echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+
+  #           IMAGE_NAME=ghcr.io/${{ github.repository_owner }}/your-image-name:latest
+  #           docker pull $IMAGE_NAME
+
+  #           docker stop your-container-name || true
+  #           docker rm your-container-name || true
+  #           docker run -d --name your-container-name -p 80:80 $IMAGE_NAME
+  #         EOF
