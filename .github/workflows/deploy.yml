@@ -1,4 +1,4 @@
-name: Deploy to VPS
+name: Build and Deploy to VPS
 
 on:
   push:
@@ -21,10 +21,12 @@ jobs:
 
       - name: Build and push Docker image
         run: |
-          IMAGE_NAME=ghcr.io/${{ github.repository_owner }}/titas-blog:latest
+          OWNER=$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')
+          IMAGE_NAME=ghcr.io/$OWNER/titas-blog:latest
 
           docker build -t $IMAGE_NAME .
           docker push $IMAGE_NAME
+
   # deploy:
   #   needs: build-and-push
   #   runs-on: ubuntu-latest
@@ -42,10 +44,12 @@ jobs:
   #         ssh ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} << 'EOF'
   #           echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
-  #           IMAGE_NAME=ghcr.io/${{ github.repository_owner }}/your-image-name:latest
+  #           OWNER=$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')
+  #           IMAGE_NAME=ghcr.io/$OWNER/titas-blog:latest
+
   #           docker pull $IMAGE_NAME
 
-  #           docker stop your-container-name || true
-  #           docker rm your-container-name || true
-  #           docker run -d --name your-container-name -p 80:80 $IMAGE_NAME
+  #           docker stop titas-blog || true
+  #           docker rm titas-blog || true
+  #           docker run -d --name titas-blog -p 80:80 $IMAGE_NAME
   #         EOF
