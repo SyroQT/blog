@@ -2,10 +2,9 @@ import { notFound } from 'next/navigation'
 import { fetchBlogById } from '@/lib/firebase/blogs'
 import { Article } from '@/components/blog/Article'
 import { Metadata } from 'next'
-import { REVALIDATE_INTERVAL } from '@/lib/constants'
 
 // Revalidate the page every hour to keep blog data fresh
-export const revalidate = REVALIDATE_INTERVAL
+export const revalidate = 3600
 
 interface PageProps {
     params: Promise<{
