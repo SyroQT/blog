@@ -1,4 +1,4 @@
-name: Build and Deploy to VPS
+name: Deploy to VPS
 
 on:
   push:
@@ -6,64 +6,13 @@ on:
       - main
 
 jobs:
-  next-build:
-    runs-on: ubuntu-latest
-    container: node:lts # Use node LTS container version, same as Dockerfile base image
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3 # Checkout the code
-      - run: npm ci #install dependencies
-      - run: npm run build
-        env:
-          NEXT_PUBLIC_FIREBASE_API_KEY: ${{ secrets.NEXT_PUBLIC_FIREBASE_API_KEY }}
-          NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN: ${{ secrets.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN }}
-          NEXT_PUBLIC_FIREBASE_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_FIREBASE_PROJECT_ID }}
-          NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET: ${{ secrets.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET }}
-          NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID: ${{ secrets.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID }}
-          NEXT_PUBLIC_FIREBASE_APP_ID: ${{ secrets.NEXT_PUBLIC_FIREBASE_APP_ID }}
-          NEXT_PUBLIC_SITE_URL: ${{ vars.NEXT_PUBLIC_SITE_URL }}
-      - name: Upload Next build # Upload the artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: build
-          path: |
-            .next
-            public
-          retention-days: 7
-
-  docker-push:
-    needs: next-build
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Download next build # Download the above uploaded artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: build
-
-      - name: Log in to GitHub Container Registry
-        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
-
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
-
-      - name: Build and push Docker image
-        run: |
-          OWNER=$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')
-          IMAGE_NAME=ghcr.io/$OWNER/titas-blog:latest
-
-          docker build \
-          -t $IMAGE_NAME .
-          docker push $IMAGE_NAME
-
-  deploy:
-    needs: docker-push
-    runs-on: ubuntu-latest
-
-    steps:
       - name: Set up SSH
         run: |
           mkdir -p ~/.ssh
@@ -71,18 +20,20 @@ jobs:
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H ${{ secrets.VPS_HOST }} >> ~/.ssh/known_hosts
 
-      - name: Deploy on VPS using Docker Compose
+      - name: Copy code to VPS
+        run: |
+            rsync -avz --delete --delete-excluded \
+              --exclude node_modules \
+              --exclude .git \
+              --filter "protect .env" \
+              ./ \
+              "${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:${{ vars.DEPLOY_PATH }}/blog/"
+
+
+      - name: Deploy on VPS
         run: |
           ssh ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} << 'EOF'
-            echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
-
-            OWNER=$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')
-            IMAGE_NAME=ghcr.io/$OWNER/titas-blog:latest
-
-            docker pull $IMAGE_NAME
-
             cd ${{ vars.DEPLOY_PATH }}
-
             docker compose down || true
-            docker compose up -d --build
+            docker compose up -d --build ${{ vars.SERVICE_NAME }}
           EOF
