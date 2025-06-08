@@ -7,13 +7,13 @@ export function BlogPostCard({ post, isLeft }: { post: BlogPost; isLeft: boolean
     const imageFallBack = "https://firebasestorage.googleapis.com/v0/b/titas-dev-blog.appspot.com/o/images%2Fblogs%2Fnewcastle-bridge.jpg?alt=media&token=b62a83d9-3cf8-4e3a-9851-e297f80b25d5"
 
     // Format the date
-    const formatDate = (date: any) => {
+    const formatDate = (date: Date | string | number | { toDate(): Date }) => {
         try {
             // Handle different date formats
             let dateObj: Date
 
             // Handle Firebase Timestamp
-            if (date && typeof date.toDate === 'function') {
+            if (date && typeof date === 'object' && 'toDate' in date && typeof date.toDate === 'function') {
                 dateObj = date.toDate()
             } else if (date instanceof Date) {
                 dateObj = date
@@ -34,7 +34,7 @@ export function BlogPostCard({ post, isLeft }: { post: BlogPost; isLeft: boolean
                 year: 'numeric'
             }).format(dateObj);
 
-        } catch (error) {
+        } catch {
             return 'Unknown date'
         }
     }
