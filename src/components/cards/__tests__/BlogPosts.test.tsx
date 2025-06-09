@@ -3,6 +3,7 @@ import { render, screen } from '@testing-library/react'
 import { BlogPosts } from '../BlogPosts'
 import { fetchBlogs } from '@/lib/firebase/blogs'
 import { BlogPost } from '@/lib/firebase/blogs'
+import { Timestamp } from 'firebase/firestore'
 
 jest.mock('@/lib/firebase/blogs', () => ({
   fetchBlogs: jest.fn(),
@@ -17,7 +18,7 @@ describe('BlogPosts', () => {
       content: 'content',
       main_image: 'img1.jpg',
       published: true,
-      published_date: new Date('2024-01-01'),
+      published_date: Timestamp.fromDate(new Date('2024-01-01')),
       readTime: '2 min',
       imageUrl: 'https://example.com/1.jpg',
     },
@@ -28,7 +29,7 @@ describe('BlogPosts', () => {
       content: 'content',
       main_image: 'img2.jpg',
       published: true,
-      published_date: new Date('2024-01-02'),
+      published_date: Timestamp.fromDate(new Date('2024-01-02')),
       readTime: '3 min',
       imageUrl: 'https://example.com/2.jpg',
     },

@@ -1,4 +1,4 @@
-import { collection, getDocs, doc, getDoc, query, orderBy } from 'firebase/firestore'
+import { collection, getDocs, doc, getDoc, query, orderBy, Timestamp } from 'firebase/firestore'
 import { getDownloadURL, ref, StorageReference, FirebaseStorage } from 'firebase/storage'
 import { db, storage } from '../config'
 import { fetchBlogs, fetchBlogById, getImageUrl } from '../blogs'
@@ -40,7 +40,7 @@ describe('Blog API Functions', () => {
                     main_image: 'path/to/image1.jpg',
                     content: 'Content 1',
                     published: true,
-                    published_date: new Date(),
+                    published_date: Timestamp.fromDate(new Date()),
                     readTime: '5 min',
                     tags: ['test']
                 },
@@ -51,7 +51,7 @@ describe('Blog API Functions', () => {
                     main_image: 'path/to/image2.jpg',
                     content: 'Content 2',
                     published: true,
-                    published_date: new Date(),
+                    published_date: Timestamp.fromDate(new Date()),
                     readTime: '3 min',
                     tags: ['test']
                 }
@@ -102,7 +102,7 @@ describe('Blog API Functions', () => {
                 description: 'Description',
                 content: 'Content',
                 published: true,
-                published_date: new Date(),
+                published_date: Timestamp.fromDate(new Date()),
                 readTime: '5 min'
             }
 
@@ -132,7 +132,7 @@ describe('Blog API Functions', () => {
                 main_image: 'path/to/image.jpg',
                 content: 'Content',
                 published: true,
-                published_date: new Date(),
+                published_date: Timestamp.fromDate(new Date()),
                 readTime: '5 min'
             }
 
@@ -164,7 +164,7 @@ describe('Blog API Functions', () => {
                 description: 'Description',
                 content: 'Content',
                 published: true,
-                published_date: new Date(),
+                published_date: Timestamp.fromDate(new Date()),
                 readTime: '5 min'
             }
 

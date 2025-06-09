@@ -2,6 +2,7 @@ import '@testing-library/jest-dom'
 import { render, screen } from '@testing-library/react'
 import { BlogPostCard } from '../BlogPostCard'
 import { BlogPost } from '@/lib/firebase/blogs'
+import { Timestamp } from 'firebase/firestore'
 
 describe('BlogPostCard', () => {
   const post: BlogPost = {
@@ -11,7 +12,7 @@ describe('BlogPostCard', () => {
     content: 'Content',
     main_image: 'image.jpg',
     published: true,
-    published_date: new Date('2024-01-01'),
+    published_date: Timestamp.fromDate(new Date('2024-01-01')),
     readTime: '1 min',
     imageUrl: 'https://example.com/image.jpg',
   }
