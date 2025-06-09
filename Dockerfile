@@ -1,5 +1,5 @@
 # Stage 1: Dependencies
-ARG NODE_VERSION=23.7.0
+ARG NODE_VERSION=20.11.1
 
 FROM node:${NODE_VERSION}-alpine AS deps
 WORKDIR /app
