@@ -32,8 +32,8 @@ describe('firebase config', () => {
     }
     const existing = { name: 'x' }
     getApps.mockReturnValue([existing])
-    const module = await import('../config')
+    const configModule = await import('../config')
     expect(initializeApp).not.toHaveBeenCalled()
-    expect(module.app).toBe(existing)
+    expect(configModule.app).toBe(existing)
   })
 })
