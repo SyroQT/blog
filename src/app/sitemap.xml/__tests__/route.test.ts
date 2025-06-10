@@ -15,7 +15,7 @@ class MockResponse {
   }
 }
 
-// @ts-ignore
+// @ts-expect-error - provide Response polyfill for the test environment
 global.Response = MockResponse
 
 jest.mock('@/lib/firebase/blogs', () => ({

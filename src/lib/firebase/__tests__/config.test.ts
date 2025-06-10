@@ -16,7 +16,7 @@ describe('firebase config', () => {
   })
 
   it('initializes app when there are no apps', async () => {
-    const { initializeApp, getApps } = require('firebase/app') as {
+    const { initializeApp, getApps } = jest.requireMock('firebase/app') as {
       initializeApp: jest.Mock
       getApps: jest.Mock
     }
@@ -26,7 +26,7 @@ describe('firebase config', () => {
   })
 
   it('uses existing app when already initialized', async () => {
-    const { initializeApp, getApps } = require('firebase/app') as {
+    const { initializeApp, getApps } = jest.requireMock('firebase/app') as {
       initializeApp: jest.Mock
       getApps: jest.Mock
     }
