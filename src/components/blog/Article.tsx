@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import { BlogPost } from '@/lib/firebase/blogs'
 import ReactMarkdown from 'react-markdown'
 import { Title } from '../ui/Title'
@@ -12,6 +13,12 @@ export function Article({ post }: ArticleProps) {
 
     return (
         <article className="mx-auto">
+            {/* Back Button */}
+            <div className="sticky top-2 left-2 z-10 w-fit ml-2">
+                <Link href="/" className="inline-flex items-center gap-1 px-2 py-1 rounded bg-[var(--primary-color)] text-white">
+                    ← Back
+                </Link>
+            </div>
             {/* Hero Section with Image and Title */}
             <div className="relative w-full h-[45vh] mb-8 flex items-center justify-center">
                 <div className="relative w-full h-full">
