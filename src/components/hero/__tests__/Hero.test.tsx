@@ -6,7 +6,7 @@ import '@testing-library/jest-dom'
 describe('Hero component', () => {
   it('renders heading text', () => {
     render(<Hero />)
-    const heading = screen.getByRole('heading', { name: /welcome to my blog/i })
+    const heading = screen.getByRole('heading', { name: /All that matters is that you are making something you love, to the best of your ability, here and now./i })
     expect(heading).toBeInTheDocument()
   })
 
@@ -17,3 +17,4 @@ describe('Hero component', () => {
     expect(image).toHaveAttribute('src', expect.stringContaining('firebasestorage'))
   })
 })
+
