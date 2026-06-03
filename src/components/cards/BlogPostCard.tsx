@@ -2,10 +2,9 @@ import Image from 'next/image'
 import Link from 'next/link'
 import styles from '../../styles/cards/BlogPostCard.module.css'
 import { BlogPost } from '@/lib/mdx'
+import { getImageUrl } from '@/lib/images'
 
 export function BlogPostCard({ post, isLeft }: { post: BlogPost; isLeft: boolean }) {
-    const imageFallBack = "https://firebasestorage.googleapis.com/v0/b/titas-dev-blog.appspot.com/o/images%2Fblogs%2Fnewcastle-bridge.jpg?alt=media&token=b62a83d9-3cf8-4e3a-9851-e297f80b25d5"
-
     // Format the date
     const formatDate = (date: Date | string | number) => {
         try {
@@ -41,7 +40,7 @@ export function BlogPostCard({ post, isLeft }: { post: BlogPost; isLeft: boolean
                 {/* Image container with fixed dimensions */}
                 <div className="relative w-1/2 h-full">
                     <Image
-                        src={post.imageUrl || imageFallBack}
+                        src={getImageUrl(post.imageUrl)}
                         alt={post.title || "Blog post image"}
                         fill
                         className="object-cover"
