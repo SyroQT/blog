@@ -1,5 +1,6 @@
 import { Courier_Prime, Roboto, Inter, Montserrat } from 'next/font/google'
 import VerticalNav from '@/components/layout/VerticalNav'
+import Footer from '@/components/layout/Footer'
 
 // Font configurations
 const courierPrime = Courier_Prime({
@@ -31,14 +32,18 @@ interface RootLayoutProps {
 export function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en" className={`${courierPrime.variable} ${inter.variable} ${roboto.variable} ${montserrat.variable}`}>
-      <body className="grid h-screen grid-cols-[1fr_auto] grid-rows-[2fr_1fr] gap-2">
+      <body className="grid min-h-screen grid-cols-[1fr_auto] grid-rows-[1fr_auto] gap-2">
         <main className="col-span-1 font-montserrat">
           {children}
         </main>
 
-        <aside className="sticky top-0 self-start h-screen flex items-center justify-center col-start-2">
+        <aside className="sticky top-0 self-start h-screen flex items-center justify-center col-start-2 row-span-2">
           <VerticalNav />
         </aside>
+
+        <footer className="col-span-1 col-start-1">
+          <Footer />
+        </footer>
       </body>
     </html>
   )
