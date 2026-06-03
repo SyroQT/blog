@@ -20,7 +20,6 @@
     "@types/node": "^22.15.30",
     "@types/react": "^19.1.6",
     "@types/react-dom": "^19.1.6",
-    "@types/testing-library__jest-dom": "^6.0.0",
     "autoprefixer": "^10.4.21",
     "eslint": "^9.28.0",
     "eslint-config-next": "^15.3.3",
@@ -28,9 +27,9 @@
     "jest-environment-jsdom": "^29.7.0",
     "postcss": "^8.5.4",
     "prettier": "^3.5.3",
+    "rimraf": "^6.0.1",
     "tailwindcss": "^4.1.8",
-    "typescript": "^5.8.3",
-    "rimraf": "^6.0.1"
+    "typescript": "^5.8.3"
   },
   "scripts": {
     "dev": "next dev",
