@@ -33,18 +33,21 @@ interface RootLayoutProps {
 export function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en" className={`${courierPrime.variable} ${inter.variable} ${roboto.variable} ${montserrat.variable}`}>
-      <body className="grid min-h-screen grid-cols-[1fr_auto] grid-rows-[1fr_auto] gap-2">
-        <main className="col-span-1 font-montserrat">
-          {children}
-        </main>
+      <body className="flex min-h-screen bg-[var(--background-color)]">
+        <div className="flex-1 flex flex-col min-w-0 pr-20">
+          <main className="flex-1 font-montserrat">
+            {children}
+          </main>
 
-        <aside className="sticky top-0 self-start h-screen flex items-center justify-center col-start-2 row-span-2">
+          <footer>
+            <Footer />
+          </footer>
+        </div>
+
+        <aside className="fixed right-0 top-0 h-screen flex items-center justify-center w-20">
           <VerticalNav />
         </aside>
 
-        <footer className="col-span-1 col-start-1">
-          <Footer />
-        </footer>
         <Analytics />
       </body>
     </html>
