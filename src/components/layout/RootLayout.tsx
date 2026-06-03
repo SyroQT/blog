@@ -33,8 +33,8 @@ interface RootLayoutProps {
 export function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en" className={`${courierPrime.variable} ${inter.variable} ${roboto.variable} ${montserrat.variable}`}>
-      <body className="flex min-h-screen bg-[var(--background-color)]">
-        <div className="flex-1 flex flex-col min-w-0 pr-20">
+      <body className="grid min-h-screen grid-cols-[1fr_5rem]">
+        <div className="flex flex-col col-start-1">
           <main className="flex-1 font-montserrat">
             {children}
           </main>
@@ -44,7 +44,9 @@ export function RootLayout({ children }: RootLayoutProps) {
           </footer>
         </div>
 
-        <aside className="fixed right-0 top-0 h-screen flex items-center justify-center w-20">
+        {/* Spacer keeps the grid column alive; the real nav is fixed inside it */}
+        <div className="col-start-2 row-start-1" aria-hidden="true" />
+        <aside className="fixed right-0 top-0 h-screen w-20 flex items-center justify-center">
           <VerticalNav />
         </aside>
 
