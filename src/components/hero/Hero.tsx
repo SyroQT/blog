@@ -3,7 +3,7 @@ import styles from '../../styles/components/Hero.module.css'
 import { Title } from '../ui/Title'
 
 function Hero() {
-    const imageUrl = 'https://firebasestorage.googleapis.com/v0/b/titas-dev-blog.appspot.com/o/images%2Fblogs%2Fkatedraa-tiny.jpg?alt=media&token=db22994f-2b5d-40fb-8254-f1218fdd1ac4'
+    const imageUrl = process.env.NEXT_PUBLIC_HERO_IMAGE_URL || 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1200&q=80'
 
     return (
         <header className={`${styles.heroWrapper}`}>
@@ -21,4 +21,4 @@ function Hero() {
     )
 }
 
-export { Hero } 
+export { Hero }

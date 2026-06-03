@@ -14,7 +14,5 @@ describe('Hero component', () => {
     render(<Hero />)
     const image = screen.getByRole('img', { name: /hero image/i })
     expect(image).toBeInTheDocument()
-    expect(image).toHaveAttribute('src', expect.stringContaining('firebasestorage'))
   })
 })
-
