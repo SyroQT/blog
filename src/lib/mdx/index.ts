@@ -83,5 +83,5 @@ export async function getAllBlogs(): Promise<BlogPost[]> {
 export async function getAllBlogsMeta(): Promise<BlogPostMeta[]> {
   const blogs = await getAllBlogs()
   
-  return blogs.map(({ content: _content, ...meta }) => meta)
+  return blogs.map(({ ...meta }) => meta)
 }

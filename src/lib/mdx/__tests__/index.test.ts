@@ -1,5 +1,4 @@
 import fs from 'fs'
-import path from 'path'
 import { getAllBlogSlugs, getBlogBySlug, getAllBlogs, getAllBlogsMeta } from '../index'
 
 // Mock the fs module
@@ -8,8 +7,6 @@ jest.mock('fs')
 const mockFs = fs as jest.Mocked<typeof fs>
 
 describe('MDX Library', () => {
-  const CONTENT_DIR = path.join(process.cwd(), 'content/blogs')
-
   beforeEach(() => {
     jest.clearAllMocks()
   })

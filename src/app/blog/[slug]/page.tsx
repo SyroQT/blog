@@ -5,8 +5,13 @@ import { Metadata } from 'next'
 
 // Static generation - generate all blog pages at build time
 export async function generateStaticParams() {
-    const slugs = await getAllBlogSlugs()
-    return slugs.map(slug => ({ slug }))
+    try {
+        const slugs = await getAllBlogSlugs()
+        return slugs.map(slug => ({ slug }))
+    } catch (error) {
+        console.error('[v0] Failed to generate static params for blog posts:', error)
+        return []
+    }
 }
 
 interface PageProps {
