@@ -1,4 +1,5 @@
 import { Courier_Prime, Roboto, Inter, Montserrat } from 'next/font/google'
+import { Analytics } from '@vercel/analytics/react'
 import VerticalNav from '@/components/layout/VerticalNav'
 import Footer from '@/components/layout/Footer'
 
@@ -44,6 +45,7 @@ export function RootLayout({ children }: RootLayoutProps) {
         <footer className="col-span-1 col-start-1">
           <Footer />
         </footer>
+        <Analytics />
       </body>
     </html>
   )
