@@ -1,0 +1,76 @@
+---
+title: "Getting Started with Next.js 15"
+description: "A comprehensive guide to building modern web applications with Next.js 15, covering the App Router, Server Components, and more."
+published: true
+published_date: "2024-02-20"
+readTime: "8 min read"
+imageUrl: "https://firebasestorage.googleapis.com/v0/b/titas-dev-blog.appspot.com/o/images%2Fblogs%2Fnewcastle-bridge.jpg?alt=media&token=b62a83d9-3cf8-4e3a-9851-e297f80b25d5"
+tags: ["nextjs", "react", "web-development", "tutorial"]
+---
+
+# Getting Started with Next.js 15
+
+Next.js 15 brings exciting new features and improvements that make building modern web applications even better. In this post, I'll walk you through the key concepts and best practices.
+
+## The App Router
+
+The App Router is the recommended way to build applications with Next.js. It provides:
+
+- **Server Components by Default** - Components are rendered on the server unless you explicitly opt into client-side rendering
+- **Nested Layouts** - Share UI between routes while preserving state
+- **Streaming** - Progressively render UI from the server
+
+### Creating Your First Route
+
+Routes are created by adding a `page.tsx` file inside the `app` directory:
+
+```tsx
+// app/page.tsx
+export default function Home() {
+  return <h1>Welcome to my app!</h1>
+}
+```
+
+## Server vs Client Components
+
+Understanding when to use Server Components vs Client Components is crucial:
+
+### Server Components (Default)
+
+- Fetch data directly
+- Access backend resources
+- Keep sensitive information on the server
+- Reduce client-side JavaScript
+
+### Client Components
+
+Use the `'use client'` directive when you need:
+
+- Interactivity and event listeners
+- State and lifecycle effects
+- Browser-only APIs
+- Custom hooks that depend on state
+
+## Data Fetching
+
+Next.js 15 simplifies data fetching with async Server Components:
+
+```tsx
+async function BlogPosts() {
+  const posts = await fetchPosts()
+  
+  return (
+    <ul>
+      {posts.map(post => (
+        <li key={post.id}>{post.title}</li>
+      ))}
+    </ul>
+  )
+}
+```
+
+## Conclusion
+
+Next.js 15 provides a powerful foundation for building modern web applications. The App Router, combined with Server Components and improved data fetching patterns, makes it easier than ever to create fast, SEO-friendly applications.
+
+Happy coding!

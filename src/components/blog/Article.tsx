@@ -1,8 +1,9 @@
 import Image from 'next/image'
-import { BlogPost } from '@/lib/firebase/blogs'
+import { BlogPost } from '@/lib/mdx'
 import ReactMarkdown from 'react-markdown'
 import { Title } from '../ui/Title'
 import styles from '../../styles/blog/Article.module.css'
+
 interface ArticleProps {
     post: BlogPost
 }

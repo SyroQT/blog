@@ -1,14 +1,14 @@
-import { fetchBlogs } from '@/lib/firebase/blogs'
+import { getAllBlogs } from '@/lib/mdx'
 
 export async function GET() {
   const baseUrl = 'https://blog.titas.dev'
-  const blogs = await fetchBlogs()
+  const blogs = await getAllBlogs()
   const posts = blogs.filter(b => b.published)
 
   const urls = [
     `${baseUrl}`,
     `${baseUrl}/blog`,
-    ...posts.map(post => `${baseUrl}/blog/${post.id}`),
+    ...posts.map(post => `${baseUrl}/blog/${post.slug}`),
   ]
 
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
