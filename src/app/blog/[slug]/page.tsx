@@ -1,10 +1,18 @@
 import { notFound } from 'next/navigation'
-import { fetchBlogById } from '@/lib/firebase/blogs'
+import { getBlogBySlug, getAllBlogSlugs } from '@/lib/mdx'
 import { Article } from '@/components/blog/Article'
 import { Metadata } from 'next'
 
-// Revalidate the page every hour to keep blog data fresh
-export const revalidate = 3600
+// Static generation - generate all blog pages at build time
+export async function generateStaticParams() {
+    try {
+        const slugs = await getAllBlogSlugs()
+        return slugs.map(slug => ({ slug }))
+    } catch (error) {
+        console.error('[v0] Failed to generate static params for blog posts:', error)
+        return []
+    }
+}
 
 interface PageProps {
     params: Promise<{
@@ -15,7 +23,7 @@ interface PageProps {
 // Generate metadata for the page
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
     const resolvedParams = await params
-    const post = await fetchBlogById(resolvedParams.slug)
+    const post = await getBlogBySlug(resolvedParams.slug)
 
     if (!post) {
         return {
@@ -44,18 +52,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function BlogPostPage(props: PageProps) {
     const params = await props.params;
-    try {
-        // Fetch the blog post using the ID from the URL
-        const post = await fetchBlogById(params.slug)
+    const post = await getBlogBySlug(params.slug)
 
-        // If no post is found, show 404
-        if (!post) {
-            notFound()
-        }
-
-        return <Article post={post} />
-    } catch (error) {
-        console.error('Error fetching blog post:', error)
+    // If no post is found, show 404
+    if (!post) {
         notFound()
     }
+
+    return <Article post={post} />
 }

@@ -5,9 +5,19 @@ const nextConfig = {
         remotePatterns: [
             {
                 protocol: 'https',
-                hostname: 'firebasestorage.googleapis.com',
-                port: '',
-                pathname: '/v0/b/titas-dev-blog.appspot.com/o/**',
+                hostname: '*.amazonaws.com',
+            },
+            {
+                protocol: 'https',
+                hostname: '*.s3.amazonaws.com',
+            },
+            {
+                protocol: 'https',
+                hostname: '*.s3.*.amazonaws.com',
+            },
+            {
+                protocol: 'https',
+                hostname: 'images.unsplash.com',
             },
         ],
     },

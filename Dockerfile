@@ -18,8 +18,9 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
-
 # Build application
+# Note: Build-time env vars are NOT baked into the image
+# Runtime env vars are handled by Next.js standalone server
 RUN npm run build
 
 # Stage 3: Runner
@@ -46,10 +47,14 @@ USER nextjs
 # Expose port
 EXPOSE 3000
 
-# Set environment variable
+# Runtime environment variables (passed at container start, not baked in)
+# These can be overridden with docker run -e or docker-compose environment
 ENV PORT=3000
 ENV HOSTNAME=0.0.0.0
 
-# Start the application
+# NEXT_PUBLIC_* variables must be available at runtime for client-side code
+# Pass these when running the container:
+# docker run -e NEXT_PUBLIC_IMAGE_BASE_URL=https://your-bucket.s3.amazonaws.com ...
 
-CMD ["node", "server.js"] 
+# Start the application
+CMD ["node", "server.js"]

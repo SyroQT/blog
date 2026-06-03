@@ -1,26 +1,35 @@
 import '@testing-library/jest-dom'
-import type { NextRouter } from 'next/router'
 import type { ImageProps } from 'next/image'
 import React from 'react'
 
-// Mock next/router
-jest.mock('next/router', () => ({
-  useRouter(): Partial<NextRouter> {
+// Mock next/navigation (App Router)
+jest.mock('next/navigation', () => ({
+  useRouter() {
     return {
-      route: '/',
-      pathname: '',
-      query: {},
-      asPath: '',
       push: jest.fn(),
       replace: jest.fn(),
+      prefetch: jest.fn(),
+      back: jest.fn(),
+      forward: jest.fn(),
+      refresh: jest.fn(),
     }
+  },
+  usePathname() {
+    return '/'
+  },
+  useSearchParams() {
+    return new URLSearchParams()
+  },
+  useParams() {
+    return {}
   },
 }))
 
 // Mock next/image
 jest.mock('next/image', () => {
-  return function MockedImage(props: any) {
-    const { priority, objectFit, fill, layout, ...rest } = props
+  return function MockedImage(props: ImageProps) {
+    const { priority, fill, ...rest } = props
+    // eslint-disable-next-line @next/next/no-img-element
     return React.createElement('img', { ...rest })
   }
 })

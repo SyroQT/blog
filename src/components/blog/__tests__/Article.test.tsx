@@ -2,8 +2,7 @@ import '@testing-library/jest-dom'
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import { Article } from '../Article'
-import { BlogPost } from '@/lib/firebase/blogs'
-import { Timestamp } from 'firebase/firestore'
+import { BlogPost } from '@/lib/mdx'
 
 jest.mock('react-markdown', () => ({
   __esModule: true,
@@ -16,14 +15,14 @@ jest.mock('react-markdown', () => ({
 }))
 
 const basePost: BlogPost = {
-  id: '1',
+  slug: 'my-post',
   title: 'My Post',
   description: 'desc',
   content: '## Hello world',
-  main_image: '',
   published: true,
-  published_date: Timestamp.fromDate(new Date('2024-01-01')),
+  published_date: new Date('2024-01-01'),
   readTime: '1 min',
+  imageUrl: '',
 }
 
 describe('Article', () => {
